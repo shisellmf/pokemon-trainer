@@ -1,0 +1,95 @@
+
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import './styles/variables.scss';
+@import './styles/main.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Tema de Angular Material (después de tailwind)
+@include mat.core();
+
+$custom-primary: map.merge(mat.$indigo-palette, (
+  500: $primary-color
+));
+
+$custom-accent: map.merge(mat.$amber-palette, (
+  500: $secondary-color
+));
+
+//paleta tonos
+$primary-palette: mat.define-palette($custom-primary);
+$accent-palette: mat.define-palette($custom-accent);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  )
+));
+
+@include mat.all-component-themes($custom-theme);
+
+mat-icon{
+  color: $text-blue;
+}
+
+mat-form-field{
+  border-radius: 20px;
+}
+
+mat-select{
+  margin-top: 5px;
+  border-radius: 20px !important;
+}
+
+mat-option{
+  color: $text-blue !important;
+  border-bottom: 1px solid $text-blue;
+}
+
+mat-option:hover{
+  background-color: $hover-color;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled), .mat-mdc-option:focus:not(.mdc-list-item--disabled), .mat-mdc-option.mat-mdc-option-active, .mat-mdc-option.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(.mdc-list-item--disabled) {
+  background: $hover-color;
+}
+
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
+  border-radius: 15px !important;
+  margin-top: 7px;
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE y Edge antiguos
+  color: $text-blue;
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari
+  }
+}
+
+.mdc-menu-surface.mat-mdc-select-panel {
+  padding: 0 !important;
+}
+
+.mdc-text-field--outlined{
+  border-color: $primary-color;
+}
+
+.mdc-notched-outline__notch { border-right: none; }
+
+.input-full{
+  color: $primary-color;
+}
+
+.mat-form-field-should-float{
+  color: $primary-color;
+}
+
+.mat-mdc-form-field-error-wrapper{
+  font-size: 12px;
+  padding: 0 !important;
+}

@@ -1,0 +1,40 @@
+<p class="body__list__titulo">Pókemon</p>
+<p class="body__list__subtitulo pb-8">Selecciona 3 Pókemon para que sean parte de tu equipo</p>
+<form class="body__list__search mb-8">
+  <mat-form-field class="w-full">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-label></mat-label>
+    <input [formControl]="searchControl" class="!rounded-xl" type="text" autofocus matInput placeholder="Buscar por índice, nombre...">
+  </mat-form-field>
+</form>
+
+<ng-container *ngIf="!isNotFoundPokemon else showNotFoundMessage">
+  <div class="grid md:grid-cols-3 gap-x-4 gap-y-12 sm:grid-cols-1">
+    <div *ngFor="let pokemon of list" (click)=selectPokemon(pokemon.id)
+          class="relative h-28 bg-gray-200 rounded-xl body__list__pokemon"
+          [ngClass]="{
+            'body__list__pokemon--selected': pokemon.isSelected,
+            'body__list__pokemon--unselected': pokemon.isSelected
+          }">
+      <img
+        src={{pokemon.image}}
+        alt="Pokemon"
+        class="absolute left-1/2 w-28 h-28 -translate-x-1/2 -translate-y-1/2 z-10"
+      />
+      <div class="flex place-items-center body__list__descripcion
+                  absolute bottom-3 left-1/2 transform -translate-x-1/2 px-4 py-1 z-20">
+        <div class="font-semibold">#00{{pokemon.id}}</div>
+        <div class="font-semibold pl-4">{{pokemon.name}}</div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #showNotFoundMessage>
+  <div class="grid md:grid-cols-3">
+    <p>No se encontró Pokemon</p>
+  </div>
+</ng-template>
+
+
+

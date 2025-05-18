@@ -1,0 +1,28 @@
+
+@import '../../../styles/variables.scss';
+
+.body__list{
+  &__descripcion{
+    background-color: $button-primary;
+    color: $base-color;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  &__pokemon{
+    cursor: pointer;
+  }
+
+  &__pokemon--selected{
+    background-color: $neutro-color;
+  }
+
+  &__pokemon--unselected{
+    background-color: $secondary-color;
+  }
+
+  &__descripcion{
+    margin-top: 10px;
+  }
+}

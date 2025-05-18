@@ -1,0 +1,101 @@
+@import './variables.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Poppins', sans-serif; }
+
+.nav .nav__logo{
+  width: 10%;
+}
+
+.custom-flat-button:not(:disabled) {
+  background-color: $button-primary !important;
+  color: white !important;
+
+}
+
+.header{
+  padding-top: 77px;
+
+  &__title{
+    color: $primary-color;
+    font-size: $fontsize-titulo;
+  }
+
+  &__subtitle{
+    color:$info-color;
+    font-size: $fontsize-subtitulo;
+  }
+
+  &__icon{
+    font-size: $fontsize-titulo;
+  }
+}
+
+
+.body {
+  padding-bottom: 100px;
+
+  &__image{
+    width: 392px;
+    height: 600px;
+    background-color: $secondary-color;
+    border-radius: 50px;
+  }
+
+  &__form{
+    width: 352px;
+  }
+}
+
+.body__image{
+  &__titulo{
+    font-size: $fontsize-titulo;
+  }
+
+  &__foto, &__icon{
+    width: 269px;
+    height: 269px;
+    border: 14px solid $base-color;
+    background-color: $hover-color;
+  }
+
+  &__icon>img{
+    width: 100px;
+    height: 100px;
+  }
+
+  &__upload{
+    border-color: $text-blue;
+    color: $text-blue;
+    background-color: $base-color;
+    padding: 18px;
+    font-size: $fontsize-info;
+  }
+
+}
+
+.body__list{
+  &__titulo{
+    @include titulo();
+  }
+  &__subtitulo{
+    @include subtitulo();
+  }
+}
+
+.body__form{
+  &__titulo{
+    @include titulo();
+  }
+  &__subtitulo{
+    @include subtitulo();
+  }
+  &__button{
+    width: 200px;
+    padding: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    font-size: $fontsize-subtitulo;
+  }
+}
+
+
