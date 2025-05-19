@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registro-entrenador',
@@ -16,18 +17,34 @@ export class RegistroEntrenadorComponent{
   nameTrainer:string='';
   step:number=0;
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (!input.files || input.files.length === 0) return;
+  constructor(private snackBar:MatSnackBar){}
 
-    this.imageFile = input.files[0];
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action);
+  }
+
+  onFileSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    if (file.size > 1024 * 1024) { // > 1MB
+      this.openSnackBar('La imagen es demasiado grande. Selecciona una menor a 1MB.','ok')
+      return;
+    }
+
+    this.imageFile = file;
     this.imageText= this.imageFile.name;
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result;
+      const result = reader.result;
+      if (typeof result === 'string') {
+        this.imagePreview = reader.result;
+        localStorage.setItem('imgTrainer', result);
+      }
     };
-    reader.readAsDataURL(this.imageFile);
+    reader.readAsDataURL(file);
+
   }
 
 }

@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon.interface';
-import { FacadeService } from '../../services/facade.service';
+import { FacadeService } from '../../../services/facade.service';
+import { Router } from '@angular/router';
 
 interface PokemonCard extends Pokemon{
   isSelected:boolean;
@@ -29,7 +30,7 @@ export class ListPokemonComponent implements OnInit {
   private debouncerSubscription?: Subscription;
 
 
-  constructor(private facadeService:FacadeService){}
+  constructor(private facadeService:FacadeService, private router:Router){}
 
 
   ngOnInit(): void {
@@ -118,5 +119,9 @@ export class ListPokemonComponent implements OnInit {
         this.btnGuardar.disabled=false;
       }else{this.btnGuardar.disabled=true;}
 
+  }
+
+  saveTeam(){
+    this.router.navigate(['/equipo-pokemon']);
   }
 }

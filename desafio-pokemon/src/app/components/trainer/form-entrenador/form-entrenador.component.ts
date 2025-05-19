@@ -40,10 +40,9 @@ export class FormEntrenadorComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
-
+      localStorage.setItem("trainerName",this.profileForm.get('nombre')?.value || '');
       localStorage.setItem("infoTrainer",JSON.stringify(this.profileForm.value));
       this.router.navigate(["/entrenador-equipo"]);
-      //this.step.emit(1);
     }
   }
 

@@ -11,17 +11,15 @@ export interface infoHeader {
   name: 'headerText'
 })
 export class HeaderTextPipe implements PipeTransform {
-  nameTrainer:string='';
   text:string='';
 
   infoHeader: infoHeader[] = [
     {step:0, prefix:"¡Hola! ", title: 'Configuremos tu perfil', subtitle: 'Queremos conocerte mejor'},
     {step:1, prefix:"", title: '¡Ya casi términamos!', subtitle: 'Revisa la información y completa lo solicitado'},
-    {step:2, prefix:"", title: `¡Hola ${this.nameTrainer}`, subtitle: 'Jugar Fútbol'}
+    {step:2, prefix:"", title: '¡Hola ', subtitle: ''}
   ];
 
-  transform(step:number,nameTrainer:string,type:number): string {
-    this.nameTrainer= nameTrainer;
+  transform(step:number,type:number): string {
 
     switch(type){
       case 1:

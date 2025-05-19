@@ -6,6 +6,7 @@ $info-color:#868686;
 $neutro-color:#F2F2F2;
 $text-blue: #2C85BC;
 $text-gray:#4B4B4B;
+$text-black:#000000;
 $base-color:#ffffff;
 $hover-color:#E7EFF5;
 $button-primary:#01426A;
@@ -13,6 +14,8 @@ $button-primary:#01426A;
 $fontsize-titulo:33px;
 $fontsize-subtitulo:18px;
 $fontsize-info:15px;
+$fontsize-sm:13px;
+$font-w6: 600;
 //mixin
 @mixin titulo {
   color: $primary-color;

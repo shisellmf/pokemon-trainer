@@ -5,42 +5,18 @@
     <div class="header">
       <p class="header__title">
         <mat-icon class="header__icon mr-3">chevron_left</mat-icon>
-        <span class="font-bold">{{ step | headerText:this.trainer.name:1 }}</span>
-        <span class="font-semibold">{{ step | headerText:this.trainer.name:2 }}</span>
+        <span class="font-bold">{{ step | headerText:1 }}</span>
+        <span class="font-semibold">{{ step | headerText:2 }}</span>
       </p>
-      <small class="header__subtitle pl-8 pt-2">{{ step | headerText:this.trainer.name:3 }}</small>
+      <small class="header__subtitle pl-8 pt-2">{{ step | headerText:3 }}</small>
     </div>
   </div>
 
   <div class="grid gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
     <div class="body__image shrink-0">
-      <div class="grid p-8 grid-cols-1 place-items-center gap-4 ...">
-        <div class="body__image__titulo--blue pt-2 pb-3"><p class="font-semibold">{{this.trainer.name}}</p></div>
-        <div>
-          <ng-container *ngIf="imagePreview; else iconPlaceholder">
-            <img [src]="imagePreview" alt="Imagen" class="body__image__foto rounded-full" />
-          </ng-container>
-          <ng-template #iconPlaceholder>
-            <div class="body__image__icon rounded-full place-content-center justify-items-center">
-              <img [src]="fallbackImage" alt="Icon">
-            </div>
-          </ng-template>
-        </div>
-        <div class="w-full pt-8">
-            <div class="body__image__info grid grid-cols-2 place-content-between pt-0">
-              <div class="font-semibold">Pasatiempo:</div>
-              <div>{{this.trainer.hobby}}</div>
-              <div class="font-semibold">Edad:</div>
-              <div>{{this.trainer.age}}</div>
-              <ng-container *ngIf="age>18">
-                <div class="font-semibold">DUI:</div>
-                <div>{{this.trainer.dui}}</div>
-              </ng-container>
-            </div>
-        </div>
-      </div>
+      <app-image-info ></app-image-info>
     </div>
-    <div class="body__list md:place-self-start !sm:mt-12">
+    <div class="body__list body__list--mt md:place-self-start !sm:mt-12">
       <app-list-pokemon></app-list-pokemon>
     </div>
   </div>

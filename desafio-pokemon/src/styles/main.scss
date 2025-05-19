@@ -14,20 +14,24 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 }
 
 .header{
-  padding-top: 77px;
+  padding: 4.8rem 0rem 3rem 3rem;
 
-  &__title{
-    color: $primary-color;
-    font-size: $fontsize-titulo;
-  }
-
-  &__subtitle{
-    color:$info-color;
-    font-size: $fontsize-subtitulo;
+  &__titulo--black{
+    font-size: 36px!important;
+    color: $text-black !important;
   }
 
   &__icon{
     font-size: $fontsize-titulo;
+  }
+
+  &__button{
+    font-weight: $font-w6;
+    font-size: $fontsize-sm;
+    border-radius: 10px !important;
+    border: 1px solid $button-primary !important;
+    color: $button-primary!important;
+    height: 30px!important;
   }
 }
 
@@ -84,18 +88,20 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 
 }
 
-.body__list, .body__form{
-  margin-top: -4rem;
-
+.body__list, .body__form, .header{
   &__titulo{
     @include titulo();
   }
   &__subtitulo{
     @include subtitulo();
   }
+}
+
+.body__list, .body__form{
   &__button{
     @include button();
    }
 }
+
 
 

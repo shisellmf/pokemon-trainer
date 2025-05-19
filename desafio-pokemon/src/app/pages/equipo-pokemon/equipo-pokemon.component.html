@@ -1,0 +1,24 @@
+<div class="relative z-10">
+  <app-loading [isLoading]="isLoading" [info]="step | loadingText"></app-loading>
+
+  <div class="grid md:grid-cols-4 sm:grid-cols-1 gap-2 md:place-content-center sm:place-content-start header">
+    <div class="header__titulo header__titulo--black md:place-self-end sm:place-self-start ...">
+        <span class="font-bold">¡Hola {{trainerName}}!</span>
+    </div>
+    <div>
+      <button class="header__button pl-8 mt-3 md:ml-5" mat-stroked-button>
+        <mat-icon mat-stroked-button matPrefix>edit</mat-icon>
+        Editar Perfil
+      </button>
+    </div>
+  </div>
+
+  <div class="grid gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
+    <div class="body__image shrink-0">
+      <app-image-info></app-image-info>
+    </div>
+    <div class="body__list body__list--mt md:place-self-start !sm:mt-12">
+      <app-selected-pokemon></app-selected-pokemon>
+    </div>
+  </div>
+</div>
