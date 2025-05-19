@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+
+.loading{
+  &__img{
+    height: 374px;
+  }
+  &__info{
+    font-size: 35px;
+    color:$primary-color;;
+  }
+}

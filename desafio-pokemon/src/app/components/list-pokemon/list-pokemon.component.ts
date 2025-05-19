@@ -32,7 +32,7 @@ export class ListPokemonComponent implements OnInit {
 
     this.debouncerSubscription = this.searchControl.valueChanges
       .pipe(
-        debounceTime(500),
+        debounceTime(400),
         distinctUntilChanged()
       )
       .subscribe(value => {
@@ -61,19 +61,19 @@ export class ListPokemonComponent implements OnInit {
   searchList(text:string|number|null){
     if(text){
       this.facadeService.searchListPokemon(text).subscribe((data: Pokemon | null) => {
-        console.log(this.list);
-
         if (data) {
+          this.isNotFoundPokemon = false;
           this.list = [{
             ...data,
             isSelected: this.isSelected(data.id)
           }];
         } else {
           this.list = [];
-          this.isNotFoundPokemon = false;
+          this.isNotFoundPokemon = true;
         }
       });
     }else{
+      this.isNotFoundPokemon = false;
       this.getList();
     }
   }

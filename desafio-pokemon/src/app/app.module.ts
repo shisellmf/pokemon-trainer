@@ -18,13 +18,15 @@ import { RegistroEntrenadorComponent } from './pages/registro-entrenador/registr
 import { FormEntrenadorComponent } from './components/form-entrenador/form-entrenador.component';
 import { ListPokemonComponent } from './components/list-pokemon/list-pokemon.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroEntrenadorComponent,
     FormEntrenadorComponent,
-    ListPokemonComponent
+    ListPokemonComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
