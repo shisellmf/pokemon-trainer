@@ -52,6 +52,11 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
     font-size: $fontsize-titulo;
   }
 
+  &__titulo--blue{
+    font-size: 35px;
+    color: $primary-color;
+  }
+
   &__foto, &__icon{
     width: 269px;
     height: 269px;
@@ -72,18 +77,16 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
     font-size: $fontsize-info;
   }
 
+  &__info{
+    color: $text-gray;
+    font-size: 24px;
+  }
+
 }
 
-.body__list{
-  &__titulo{
-    @include titulo();
-  }
-  &__subtitulo{
-    @include subtitulo();
-  }
-}
+.body__list, .body__form{
+  margin-top: -4rem;
 
-.body__form{
   &__titulo{
     @include titulo();
   }
@@ -91,11 +94,8 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
     @include subtitulo();
   }
   &__button{
-    width: 200px;
-    padding: 1.5rem !important;
-    border-radius: 0.75rem !important;
-    font-size: $fontsize-subtitulo;
-  }
+    @include button();
+   }
 }
 
 

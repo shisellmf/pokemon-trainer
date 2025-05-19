@@ -16,14 +16,6 @@ export class RegistroEntrenadorComponent{
   nameTrainer:string='';
   step:number=0;
 
-  nextStep(step:number){
-    this.step= step;
-    this.isLoading=true;
-    setTimeout(() => {
-      this.isLoading= false;
-    }, 2000);
-  }
-
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (!input.files || input.files.length === 0) return;

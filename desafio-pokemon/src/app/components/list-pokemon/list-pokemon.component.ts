@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 import { debounceTime, distinctUntilChanged, Subject, Subscription } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon.interface';
 import { FacadeService } from '../../services/facade.service';
@@ -15,6 +16,9 @@ interface PokemonCard extends Pokemon{
 })
 
 export class ListPokemonComponent implements OnInit {
+
+  @ViewChild('btnGuardar', {static: true}) private btnGuardar!: MatButton;
+
   list:Pokemon[]=[];
   selectedList:Pokemon[]=[];
   selected: number[] = []
@@ -23,6 +27,7 @@ export class ListPokemonComponent implements OnInit {
 
   searchControl = new FormControl('');
   private debouncerSubscription?: Subscription;
+
 
   constructor(private facadeService:FacadeService){}
 
@@ -100,7 +105,7 @@ export class ListPokemonComponent implements OnInit {
       const futureState = !selectedPokemon.isSelected;
 
       if (futureState){
-        if(this.countPokemonSelected<3){
+        if(this.countPokemonSelected<=3){
           this.select(selectedPokemon);
           this.countPokemonSelected= this.countPokemonSelected+1;
         }
@@ -108,6 +113,10 @@ export class ListPokemonComponent implements OnInit {
         this.deselect(selectedPokemon);
         this.countPokemonSelected= this.countPokemonSelected-1;
       }
+
+      if(this.countPokemonSelected==3){
+        this.btnGuardar.disabled=false;
+      }else{this.btnGuardar.disabled=true;}
 
   }
 }

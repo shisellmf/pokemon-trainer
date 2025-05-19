@@ -5,6 +5,7 @@ $secondary-color:#FFC600;
 $info-color:#868686;
 $neutro-color:#F2F2F2;
 $text-blue: #2C85BC;
+$text-gray:#4B4B4B;
 $base-color:#ffffff;
 $hover-color:#E7EFF5;
 $button-primary:#01426A;
@@ -19,5 +20,11 @@ $fontsize-info:15px;
 }
 @mixin subtitulo {
   color: $info-color;
+  font-size: $fontsize-subtitulo;
+}
+@mixin button {
+  width: 200px;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
   font-size: $fontsize-subtitulo;
 }

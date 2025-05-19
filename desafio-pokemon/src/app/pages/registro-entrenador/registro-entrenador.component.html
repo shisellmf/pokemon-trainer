@@ -1,12 +1,3 @@
-
-<div class="relative z-50">
-  <div class="grid grid-cols-1 py-4 pl-8 shadow-xl">
-    <div class="nav">
-      <img class="nav__logo" src="../../assets/pokeapi.png" alt="">
-    </div>
-  </div>
-</div>
-
 <div class="relative z-10">
   <app-loading [isLoading]="isLoading" [info]="step | loadingText"></app-loading>
 
@@ -53,22 +44,9 @@
           </div>
         </div>
       </div>
-      <ng-container *ngIf="step===0">
-        <div class="body__form md:place-self-start">
-          <app-form-entrenador (step)="nextStep($event)"></app-form-entrenador>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="step===1">
-        <div class="body__list md:place-self-start">
-          <app-list-pokemon></app-list-pokemon>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="step===2">
-        <div class="body__equipo md:place-self-start">
-          <p>works</p>
-        </div>
-      </ng-container>
-
+      <div class="body__form md:place-self-start">
+        <app-form-entrenador></app-form-entrenador>
+      </div>
   </div>
 </div>
 

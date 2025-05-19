@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import { Hobbies } from 'src/app/models/entrenador.interface';
+import { Router } from '@angular/router';
+import { PASATIEMPOS } from 'src/app/models/entrenador.interface';
 
 @Component({
   selector: 'app-form-entrenador',
@@ -16,17 +17,9 @@ export class FormEntrenadorComponent implements OnInit {
   disabledButton: boolean= false;
   descripcionDocumento:string='Documento';
   patternDui:RegExp = /^\d{8}-\d{1}$/;
+  pasatiempos= PASATIEMPOS;
 
-  pasatiempos: Hobbies[] = [
-    {value: '0', viewValue: 'Jugar Fútbol'},
-    {value: '1', viewValue: 'Jugar Basquetball'},
-    {value: '2', viewValue: 'Jugar Tennis'},
-    {value: '3', viewValue: 'Jugar Voleibol'},
-    {value: '4', viewValue: 'Jugar Fifa'},
-    {value: '5', viewValue: 'Jugar Videojuegos'},
-  ];
-
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router:Router) {
     this.profileForm = this.fb.group({
       nombre: ['', Validators.required],
       pasatiempo: [''],
@@ -47,9 +40,10 @@ export class FormEntrenadorComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
-      //guardar info entrenador
-      console.log(this.profileForm.value);
-      this.step.emit(1);
+
+      localStorage.setItem("infoTrainer",JSON.stringify(this.profileForm.value));
+      this.router.navigate(["/entrenador-equipo"]);
+      //this.step.emit(1);
     }
   }
 
@@ -67,9 +61,7 @@ export class FormEntrenadorComponent implements OnInit {
       documentoControl?.setValidators([Validators.required,Validators.pattern(this.patternDui)]);
     } else {
       this.descripcionDocumento= 'Carnet de Minoridad';
-      //documentoControl?.setValidators([Validators.pattern(this.patternDui)]);
     }
     documentoControl?.updateValueAndValidity();
   }
-
 }

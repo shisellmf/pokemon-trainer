@@ -21,6 +21,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingTextPipe } from './pipes/loading/loading-text.pipe';
 import { HeaderTextPipe } from './pipes/header/header-text.pipe';
+import { EntrenadorEquipoComponent } from './pages/entrenador-equipo/entrenador-equipo.component';
+import { AgePipe } from './pipes/age/age.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HeaderTextPipe } from './pipes/header/header-text.pipe';
     ListPokemonComponent,
     LoadingComponent,
     LoadingTextPipe,
-    HeaderTextPipe
+    HeaderTextPipe,
+    EntrenadorEquipoComponent,
+    AgePipe
   ],
   imports: [
     BrowserModule,
