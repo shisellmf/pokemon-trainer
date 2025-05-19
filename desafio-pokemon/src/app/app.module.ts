@@ -12,6 +12,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { AgePipe } from './pipes/age/age.pipe';
 import { ImageInfoComponent } from './components/trainer/image-info/image-info.component';
 import { EquipoPokemonComponent } from './pages/equipo-pokemon/equipo-pokemon.component';
 import { SelectedPokemonComponent } from './components/pokemon/selected-pokemon/selected-pokemon.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { SelectedPokemonComponent } from './components/pokemon/selected-pokemon/
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

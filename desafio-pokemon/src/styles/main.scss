@@ -13,10 +13,15 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 
 }
 
+.scrollable-div {
+  height: 748px;
+  overflow: auto; // activa scroll si el contenido se desborda
+}
+
 .header{
   padding: 4.8rem 0rem 3rem 3rem;
 
-  &__titulo--black{
+  &__title--black{
     font-size: 36px!important;
     color: $text-black !important;
   }
@@ -37,7 +42,7 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 
 
 .body {
-  padding-bottom: 100px;
+  padding-bottom: 80px;
 
   &__image{
     width: 392px;
@@ -94,10 +99,10 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 }
 
 .body__list, .body__form, .header{
-  &__titulo{
+  &__title{
     @include titulo();
   }
-  &__subtitulo{
+  &__subtitle{
     @include subtitulo();
   }
 }

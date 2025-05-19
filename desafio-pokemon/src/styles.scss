@@ -93,3 +93,12 @@ mat-option:hover{
   font-size: 12px;
   padding: 0 !important;
 }
+
+.mdc-linear-progress__bar-inner {
+  border-radius: 10px;
+  border-top-width: var(--mdc-linear-progress-track-height, 8px)!important;
+}
+
+.mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
+  background-color: $neutro-color!important;
+}
