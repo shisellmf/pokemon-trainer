@@ -29,7 +29,6 @@ export class ImageInfoComponent implements OnInit {
   getData(){
     const savedTrainer = localStorage.getItem('infoTrainer');
     const savedImage = localStorage.getItem('imgTrainer');
-    console.log(savedImage);
 
     if (savedImage) {
       this.imagePreview = savedImage;

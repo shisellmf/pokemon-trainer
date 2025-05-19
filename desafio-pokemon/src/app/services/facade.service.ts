@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { PokemonService } from './listado/pokemon.service';
+import { PokemonService } from './pokemonApi/pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +16,7 @@ export class FacadeService {
     return this.pokemonService.searchListPokemon(search);
   }
 
+  getPokemonStats(id:number):any{
+    return this.pokemonService.getPokemonStats(id);
+  }
 }

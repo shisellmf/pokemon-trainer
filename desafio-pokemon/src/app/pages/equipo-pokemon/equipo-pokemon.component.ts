@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.interface';
 
 @Component({
   selector: 'app-equipo-pokemon',
@@ -15,14 +16,13 @@ export class EquipoPokemonComponent {
 
     this.getData();
 
-    /*this.isLoading=true;
+    this.isLoading=true;
     setTimeout(() => {
       this.isLoading= false;
-    }, 2000);*/
+    }, 2000);
   }
 
   getData(){
     const savedTrainer = localStorage.getItem('trainerName');
-    this.trainerName= savedTrainer;
   }
 }

@@ -11,16 +11,16 @@
 </div>
 
 <div class="card__pokemon scrollable-div">
-  <div class="card__pokemon__detail grid grid-cols-2 grid-cols-[1fr_2fr] gap-4 mb-6">
+  <div *ngFor="let list of fullPokemonList" class="card__pokemon__detail grid grid-cols-2 grid-cols-[1fr_2fr] gap-4 mb-6">
     <div class="grid grid-flow-row auto-rows-max gap-1 place-self-center">
       <div>
-        <img class="card__pokemon__img" src="../../../../assets/pokemon.png" alt="">
+        <img class="card__pokemon__img" src="{{list.pokemon.image}}" alt="">
       </div>
       <div>
-        <p class="card__pokemon__title font-semibold">Nombre</p>
+        <p class="card__pokemon__title font-semibold">{{list.pokemon.name}}</p>
       </div>
       <div>
-        <p class="card__pokemon__subtitle">Tipo</p>
+        <p class="card__pokemon__subtitle">{{list.stats.types.value}}</p>
       </div>
     </div>
     <div class="card__pokemon__habilities grid grid-flow-row auto-rows-max gap-2 pt-4 place-self-start w-full">
@@ -29,7 +29,7 @@
           <p>HP</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="{{list.stats.stats.hp}}"></mat-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -37,7 +37,7 @@
           <p>Ataque</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="{{list.stats.stats.attack}}"></mat-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -45,7 +45,7 @@
           <p>Defensa</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="{{list.stats.stats.defense}}"></mat-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -53,7 +53,7 @@
           <p>Ataque Especial</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="{{list.stats.stats.specialAttack}}"></mat-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -61,7 +61,7 @@
           <p>Defensa Especial</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="{{list.stats.stats.specialDefense}}"></mat-progress-bar>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -69,133 +69,7 @@
           <p>Velocidad</p>
         </div>
         <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="grid grid-cols-2 card__pokemon__detail mb-6">
-    <div class="grid grid-flow-row auto-rows-max gap-1">
-      <div>
-        <img class="card__pokemon__img" src="../../../../assets/pokemon.png" alt="">
-      </div>
-      <div>
-        <p class="card__pokemon__title font-semibold">Nombre</p>
-      </div>
-      <div>
-        <p class="card__pokemon__subtitle">Tipo</p>
-      </div>
-    </div>
-    <div class="grid grid-flow-row auto-rows-max gap-2 pt-4">
-      <div class="grid grid-cols-2">
-        <div>
-          <p>HP</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Ataque</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Defensa</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Ataque Especial</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Defensa Especial</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Velocidad</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="grid grid-cols-2 card__pokemon__detail mb-6">
-    <div class="grid grid-flow-row auto-rows-max gap-1">
-      <div>
-        <img class="card__pokemon__img" src="../../../../assets/pokemon.png" alt="">
-      </div>
-      <div>
-        <p class="card__pokemon__title font-semibold">Nombre</p>
-      </div>
-      <div>
-        <p class="card__pokemon__subtitle">Tipo</p>
-      </div>
-    </div>
-    <div class="grid grid-flow-row auto-rows-max gap-2 pt-4">
-      <div class="grid grid-cols-2">
-        <div>
-          <p>HP</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Ataque</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Defensa</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Ataque Especial</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Defensa Especial</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </div>
-      <div class="grid grid-cols-2">
-        <div>
-          <p>Velocidad</p>
-        </div>
-        <div class="self-center">
-          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="40"></mat-progress-bar>
+          <mat-progress-bar class="card__pokemon__progress inset-shadow-sm shadow-xl" mode="determinate" value="{{list.stats.stats.speed}}"></mat-progress-bar>
         </div>
       </div>
     </div>

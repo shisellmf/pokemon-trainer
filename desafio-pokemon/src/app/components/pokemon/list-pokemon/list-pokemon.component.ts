@@ -57,7 +57,7 @@ export class ListPokemonComponent implements OnInit {
   }
 
   select(selectedPokemon:PokemonCard){
-    selectedPokemon.isSelected=true;
+     selectedPokemon.isSelected=true;
   }
 
   deselect(selectedPokemon:PokemonCard){
@@ -122,6 +122,8 @@ export class ListPokemonComponent implements OnInit {
   }
 
   saveTeam(){
+    const selectedPokemons: PokemonCard[] = this.list.filter(p => p.isSelected === true);
+    localStorage.setItem("selectedPoken",JSON.stringify(selectedPokemons));
     this.router.navigate(['/equipo-pokemon']);
   }
 }

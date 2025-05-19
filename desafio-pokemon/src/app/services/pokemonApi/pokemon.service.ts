@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
-import { Pokemon } from 'src/app/models/pokemon.interface';
+import { Pokemon, PokemonStat, Stats, Types } from 'src/app/models/pokemon.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,36 @@ export class PokemonService {
         return of(null);
       })
     );
+  }
+
+  getPokemonStats(id: number): Observable<PokemonStat> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`).pipe(
+      map((data) => {
+        const stats: Stats = {
+          hp: this.extractStat(data.stats, 'hp'),
+          attack: this.extractStat(data.stats, 'attack'),
+          defense: this.extractStat(data.stats, 'defense'),
+          specialAttack: this.extractStat(data.stats, 'special-attack'),
+          specialDefense: this.extractStat(data.stats, 'special-defense'),
+          speed: this.extractStat(data.stats, 'speed'),
+        };
+
+        const types: Types = {
+          value: data.types.map((t: any) => t.type.name).join('/')
+        };
+
+        const result: PokemonStat = {
+          stats,
+          types
+        };
+
+        return result;
+      })
+    );
+  }
+
+  private extractStat(stats: any[], name: string): number {
+    const statObj = stats.find(s => s.stat.name === name);
+    return statObj ? statObj.base_stat : 0;
   }
 }
