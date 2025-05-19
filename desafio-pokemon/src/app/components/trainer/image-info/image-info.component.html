@@ -1,5 +1,17 @@
 <div class="grid p-8 grid-cols-1 place-items-center gap-4 ...">
-  <div class="body__image__titulo--blue pt-2 pb-3"><p class="font-semibold">{{this.trainer.name}}</p></div>
+  <ng-container *ngIf="step == 1; else step2">
+    <div class="body__image__titulo--blue pt-2 pb-3">
+      <p class="font-semibold">{{this.trainer.name}}</p>
+    </div>
+  </ng-container>
+  <ng-template #step2>
+    <div class="flex justify-between ...  w-full">
+      <div class="body__image__titulo--gray">Entrenador</div>
+      <div>
+        <img class="" src="../../../../assets/star.png" alt="">
+      </div>
+    </div>
+  </ng-template>
   <div>
     <ng-container *ngIf="imagePreview; else iconPlaceholder">
       <img [src]="imagePreview" alt="Imagen" class="body__image__foto rounded-full" />

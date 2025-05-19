@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PASATIEMPOS, Trainer } from 'src/app/models/entrenador.interface';
 import { AgePipe } from 'src/app/pipes/age/age.pipe';
 
@@ -20,6 +20,7 @@ export class ImageInfoComponent implements OnInit {
   pasatiempos= PASATIEMPOS;
   age:number=0;
   agePipe: any;
+  @Input() public step:number=1;
 
   ngOnInit(): void {
     this.getData();
