@@ -3,6 +3,7 @@ export interface Trainer{
   name: string;
   hobby: string;
   age: number;
+  cumpleanos?: string;
   dui?: string;
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
-import { FullPokemon, Pokemon, PokemonStat } from 'src/app/models/pokemon.interface';
+import { FullPokemon, PokemonStat } from 'src/app/models/pokemon.interface';
 import { FacadeService } from '../../../services/facade.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class SelectedPokemonComponent implements OnInit {
   }
 
   getData(){
-    const infoPokemon= localStorage.getItem("selectedPoken");
+    const infoPokemon= sessionStorage.getItem("selectedPoken");
     const pokemonData = infoPokemon ? JSON.parse(infoPokemon) : {};
 
     this.loadFullPokemonList(pokemonData);

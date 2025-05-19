@@ -23,6 +23,6 @@ export class EquipoPokemonComponent {
   }
 
   getData(){
-    const savedTrainer = localStorage.getItem('trainerName');
+    this.trainerName = sessionStorage.getItem('trainerName');
   }
 }

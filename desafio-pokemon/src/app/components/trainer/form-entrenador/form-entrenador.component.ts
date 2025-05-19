@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { PASATIEMPOS } from 'src/app/models/entrenador.interface';
+import { PASATIEMPOS, Trainer } from 'src/app/models/entrenador.interface';
 
 @Component({
   selector: 'app-form-entrenador',
@@ -36,12 +36,14 @@ export class FormEntrenadorComponent implements OnInit {
         this.btnContinuar.disabled=true;
       }
     });
+
+    this.getData();
   }
 
   onSubmit() {
     if (this.profileForm.valid) {
-      localStorage.setItem("trainerName",this.profileForm.get('nombre')?.value || '');
-      localStorage.setItem("infoTrainer",JSON.stringify(this.profileForm.value));
+      sessionStorage.setItem("trainerName",this.profileForm.get('nombre')?.value || '');
+      sessionStorage.setItem("infoTrainer",JSON.stringify(this.profileForm.value));
       this.router.navigate(["/entrenador-equipo"]);
     }
   }
@@ -62,5 +64,20 @@ export class FormEntrenadorComponent implements OnInit {
       this.descripcionDocumento= 'Carnet de Minoridad';
     }
     documentoControl?.updateValueAndValidity();
+  }
+
+  getData(){
+    const savedTrainer = sessionStorage.getItem('infoTrainer');
+    const trainerData = savedTrainer ? JSON.parse(savedTrainer) : {};
+
+    if(trainerData){
+      this.profileForm.patchValue({
+        nombre: trainerData.nombre,
+        pasatiempo: trainerData.pasatiempo,
+        cumpleanos: trainerData.cumpleanos,
+        documento: trainerData.documento
+      });
+    }
+
   }
 }

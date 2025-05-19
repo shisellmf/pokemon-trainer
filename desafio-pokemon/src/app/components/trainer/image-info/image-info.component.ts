@@ -15,6 +15,7 @@ export class ImageInfoComponent implements OnInit {
     name:"",
     hobby:"",
     age:0,
+    cumpleanos:"",
     dui:""
   };
   pasatiempos= PASATIEMPOS;
@@ -27,8 +28,8 @@ export class ImageInfoComponent implements OnInit {
   }
 
   getData(){
-    const savedTrainer = localStorage.getItem('infoTrainer');
-    const savedImage = localStorage.getItem('imgTrainer');
+    const savedTrainer = sessionStorage.getItem('infoTrainer');
+    const savedImage = sessionStorage.getItem('imgTrainer');
 
     if (savedImage) {
       this.imagePreview = savedImage;

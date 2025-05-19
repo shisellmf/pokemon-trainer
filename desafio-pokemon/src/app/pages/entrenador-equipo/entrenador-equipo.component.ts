@@ -24,7 +24,7 @@ export class EntrenadorEquipoComponent implements OnInit {
   }
 
   getData(){
-    const savedTrainer = localStorage.getItem('trainerName');
+    const savedTrainer = sessionStorage.getItem('trainerName');
     this.trainerName= savedTrainer;
   }
 }
