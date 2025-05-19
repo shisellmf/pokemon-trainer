@@ -1,8 +1,8 @@
 
-<div *ngIf="isLoading" class="loading fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+<div *ngIf="isLoading" class="loading absolute inset-0 bg-white flex flex-col items-center justify-center z-50">
   <!-- Imagen GIF de carga -->
   <img src="../../../assets/loading.gif" alt="Cargando" class="loading__img" />
 
   <!-- Texto debajo -->
-  <p class="loading__info font-bold -mt-8">Cargando...</p>
+  <p class="loading__info font-bold -mt-8">{{info}}</p>
 </div>

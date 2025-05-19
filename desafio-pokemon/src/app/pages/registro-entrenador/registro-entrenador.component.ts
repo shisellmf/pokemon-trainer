@@ -6,16 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro-entrenador.component.scss']
 })
 
-
-export class RegistroEntrenadorComponent implements OnInit {
+export class RegistroEntrenadorComponent{
   fallbackImage: string = '../../assets/person_icon.svg';
   imageText:string='Adjunta una foto';
   imageFile!: File;
   imagePreview: string | ArrayBuffer | null = null;
-  step:number=1;
+  isLoading:boolean=false;
+  isVisible:boolean=true;
+  nameTrainer:string='';
+  step:number=0;
 
-  ngOnInit(): void {
-
+  nextStep(step:number){
+    this.step= step;
+    this.isLoading=true;
+    setTimeout(() => {
+      this.isLoading= false;
+    }, 2000);
   }
 
   onFileSelected(event: Event): void {

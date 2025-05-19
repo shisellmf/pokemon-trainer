@@ -1,67 +1,75 @@
-<div class="grid grid-cols-1 py-4 pl-8 shadow-xl">
-  <div class="nav">
-    <img class="nav__logo" src="../../assets/pokeapi.png" alt="">
+
+<div class="relative z-50">
+  <div class="grid grid-cols-1 py-4 pl-8 shadow-xl">
+    <div class="nav">
+      <img class="nav__logo" src="../../assets/pokeapi.png" alt="">
+    </div>
   </div>
 </div>
 
-<app-loading></app-loading>
+<div class="relative z-10">
+  <app-loading [isLoading]="isLoading" [info]="step | loadingText"></app-loading>
 
-<div class="grid grid-cols-1 pl-8 pb-8">
-  <div class="header">
-    <p class="header__title">
-      <mat-icon class="header__icon mr-3">chevron_left</mat-icon>
-      <span class="font-bold">¡Hola!</span><span class="font-semibold"> Configuremos tu perfil </span>
-    </p>
-    <small class="header__subtitle pl-8 pt-2">Queremos conocerte mejor</small>
+  <div class="grid grid-cols-1 pl-8 pb-8">
+    <div class="header">
+      <p class="header__title">
+        <mat-icon class="header__icon mr-3">chevron_left</mat-icon>
+        <span class="font-bold">{{ step | headerText:nameTrainer:1 }}</span>
+        <span class="font-semibold">{{ step | headerText:nameTrainer:2 }}</span>
+      </p>
+      <small class="header__subtitle pl-8 pt-2">{{ step | headerText:nameTrainer:3 }}</small>
+    </div>
   </div>
-</div>
 
-<div class="grid gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
-    <div class="body__image shrink-0">
-      <div class="grid p-8 grid-cols-1 place-items-center gap-4 ...">
-        <div class="body__image__titulo pt-2 pb-3"><p>Imágen Perfil</p></div>
-        <div>
-          <ng-container *ngIf="imagePreview; else iconPlaceholder">
-            <img [src]="imagePreview" alt="Imagen" class="body__image__foto rounded-full" />
-          </ng-container>
-          <ng-template #iconPlaceholder>
-            <div class="body__image__icon rounded-full place-content-center justify-items-center">
-              <img [src]="fallbackImage" alt="Icon">
-            </div>
-          </ng-template>
-        </div>
-        <div class="w-full pt-8">
-          <div class="body__image__upload border border-dashed rounded-xl ...">
-            <label class="flex place-content-between gap-4 pt-2 cursor-pointer">
-              <input type="file" hidden accept="image/*" (change)="onFileSelected($event)"/>
-              <div class="body_image__text"><p>{{imageText}}</p></div>
-              <div>
-                <ng-container *ngIf="imagePreview; else restore">
-                  <mat-icon class="text-red-900">restore_from_trash</mat-icon>
-                </ng-container>
-                <ng-template #restore>
-                  <mat-icon>cloud_upload</mat-icon>
-                </ng-template>
+  <div class="grid gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
+      <div class="body__image shrink-0">
+        <div class="grid p-8 grid-cols-1 place-items-center gap-4 ...">
+          <div class="body__image__titulo pt-2 pb-3"><p>Imágen Perfil</p></div>
+          <div>
+            <ng-container *ngIf="imagePreview; else iconPlaceholder">
+              <img [src]="imagePreview" alt="Imagen" class="body__image__foto rounded-full" />
+            </ng-container>
+            <ng-template #iconPlaceholder>
+              <div class="body__image__icon rounded-full place-content-center justify-items-center">
+                <img [src]="fallbackImage" alt="Icon">
               </div>
-            </label>
+            </ng-template>
+          </div>
+          <div class="w-full pt-8">
+            <div class="body__image__upload border border-dashed rounded-xl ...">
+              <label class="flex place-content-between gap-4 pt-2 cursor-pointer">
+                <input type="file" hidden accept="image/*" (change)="onFileSelected($event)"/>
+                <div class="body_image__text"><p>{{imageText}}</p></div>
+                <div>
+                  <ng-container *ngIf="imagePreview; else restore">
+                    <mat-icon class="text-red-900">restore_from_trash</mat-icon>
+                  </ng-container>
+                  <ng-template #restore>
+                    <mat-icon>cloud_upload</mat-icon>
+                  </ng-template>
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <ng-container *ngIf="step===0">
-      <div class="body__form md:place-self-start">
-        <app-form-entrenador></app-form-entrenador>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="step===1">
-      <div class="body__list md:place-self-start">
-        <app-list-pokemon></app-list-pokemon>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="step===2">
+      <ng-container *ngIf="step===0">
+        <div class="body__form md:place-self-start">
+          <app-form-entrenador (step)="nextStep($event)"></app-form-entrenador>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="step===1">
+        <div class="body__list md:place-self-start">
+          <app-list-pokemon></app-list-pokemon>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="step===2">
+        <div class="body__equipo md:place-self-start">
+          <p>works</p>
+        </div>
+      </ng-container>
 
-    </ng-container>
-
+  </div>
 </div>
 
 

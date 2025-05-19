@@ -1,5 +1,5 @@
 
-export interface Pasatiempo {
+export interface Hobbies {
   value: string;
   viewValue: string;
 }

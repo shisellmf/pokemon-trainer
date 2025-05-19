@@ -19,6 +19,8 @@ import { FormEntrenadorComponent } from './components/form-entrenador/form-entre
 import { ListPokemonComponent } from './components/list-pokemon/list-pokemon.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingTextPipe } from './pipes/loading/loading-text.pipe';
+import { HeaderTextPipe } from './pipes/header/header-text.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     RegistroEntrenadorComponent,
     FormEntrenadorComponent,
     ListPokemonComponent,
-    LoadingComponent
+    LoadingComponent,
+    LoadingTextPipe,
+    HeaderTextPipe
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import { Pasatiempo } from 'src/app/models/entrenador.interface';
+import { Hobbies } from 'src/app/models/entrenador.interface';
 
 @Component({
   selector: 'app-form-entrenador',
@@ -10,12 +10,14 @@ import { Pasatiempo } from 'src/app/models/entrenador.interface';
 })
 export class FormEntrenadorComponent implements OnInit {
   @ViewChild('btnContinuar', {static: true}) private btnContinuar!: MatButton;
+  @Output() step = new EventEmitter<number>();
+
   profileForm: FormGroup;
   disabledButton: boolean= false;
   descripcionDocumento:string='Documento';
   patternDui:RegExp = /^\d{8}-\d{1}$/;
 
-  pasatiempos: Pasatiempo[] = [
+  pasatiempos: Hobbies[] = [
     {value: '0', viewValue: 'Jugar Fútbol'},
     {value: '1', viewValue: 'Jugar Basquetball'},
     {value: '2', viewValue: 'Jugar Tennis'},
@@ -45,7 +47,9 @@ export class FormEntrenadorComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
+      //guardar info entrenador
       console.log(this.profileForm.value);
+      this.step.emit(1);
     }
   }
 
