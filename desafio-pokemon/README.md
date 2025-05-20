@@ -17,7 +17,7 @@ Technologies used:
 
     ```bash
     git clone https://github.com/shisellmf/pokemon-trainer.git
-    cd pokemon-trainer
+    cd desafio-pokemon
     ```
 
 2. **Install dependencies**
