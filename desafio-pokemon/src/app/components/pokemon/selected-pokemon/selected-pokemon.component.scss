@@ -4,6 +4,14 @@
   padding: 0 0 1rem 0;
 }
 
+@media (max-width: 640px) {
+  .card__pokemon{
+    &__detail{
+      width: 580px!important;
+    }
+  }
+}
+
 .card__pokemon{
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE y Edge antiguos

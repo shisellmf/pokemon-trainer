@@ -1,7 +1,7 @@
 <div class="relative z-10">
   <app-loading [isLoading]="isLoading" [info]="step | loadingText"></app-loading>
 
-  <div class="grid grid-cols-1 pl-8 pb-8">
+  <div class="grid grid-cols-1 md:pl-8 pb-8">
     <div class="header">
       <p class="header__title">
         <mat-icon class="header__icon mr-3">chevron_left</mat-icon>
@@ -12,11 +12,11 @@
     </div>
   </div>
 
-  <div class="grid gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
-    <div class="body__image shrink-0">
+  <div class="grid grid-cols-[1fr_2fr] gap-x-8 gap-y-8 md:grid-cols-2 sm:grid-cols-1 justify-items-center body">
+    <div class="body__image shrink-0 sm:mb-32">
       <app-image-info [step]="step" ></app-image-info>
     </div>
-    <div class="body__list body__list--mt md:place-self-start !sm:mt-12">
+    <div class="body__list body__list--mt md:place-self-start md:pr-8 md:-mt-8">
       <app-list-pokemon></app-list-pokemon>
     </div>
   </div>

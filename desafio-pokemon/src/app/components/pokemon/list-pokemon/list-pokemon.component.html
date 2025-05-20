@@ -13,7 +13,7 @@
     <div *ngFor="let pokemon of list"
           (click)=selectPokemon(pokemon.id)
           [class.opacity-40]="!pokemon.isSelected && countPokemonSelected==4"
-          class="relative h-28 bg-gray-200 rounded-xl body__list__pokemon"
+          class="relative h-28 bg-gray-200 rounded-xl body__list__pokemon sm:mt-8"
           [ngClass]="{
             'body__list__pokemon--selected': pokemon.isSelected,
             'body__list__pokemon--unselected': pokemon.isSelected
@@ -21,7 +21,7 @@
       <img
         src={{pokemon.image}}
         alt="Pokemon"
-        class="absolute left-1/2 w-28 h-28 -translate-x-1/2 -translate-y-1/2 z-10"
+        class="absolute left-1/2 md:w-32 md:h-32 sm:w-40 sm:h-42 -translate-x-1/2 -translate-y-1/2 z-10"
       />
       <div class="flex place-items-center body__list__descripcion
                   absolute bottom-3 left-1/2 transform -translate-x-1/2 px-4 py-1 z-20">
@@ -38,7 +38,7 @@
 
 <ng-template #showNotFoundMessage>
   <div class="grid md:grid-cols-3">
-    <p>No se encontró Pokemon</p>
+    <p>No se encontró Pokémon</p>
   </div>
 </ng-template>
 
