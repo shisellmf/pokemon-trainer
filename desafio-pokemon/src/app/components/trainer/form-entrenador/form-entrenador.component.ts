@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { PASATIEMPOS, Trainer } from 'src/app/models/entrenador.interface';
+import { FacadeService } from '../../../services/facade.service';
 
 @Component({
   selector: 'app-form-entrenador',
@@ -19,7 +20,7 @@ export class FormEntrenadorComponent implements OnInit {
   patternDui:RegExp = /^\d{8}-\d{1}$/;
   pasatiempos= PASATIEMPOS;
 
-  constructor(private fb: FormBuilder, private router:Router) {
+  constructor(private fb: FormBuilder, private router:Router, private facadeService:FacadeService) {
     this.profileForm = this.fb.group({
       nombre: ['', Validators.required],
       pasatiempo: [''],
@@ -42,8 +43,7 @@ export class FormEntrenadorComponent implements OnInit {
 
   onSubmit() {
     if (this.profileForm.valid) {
-      sessionStorage.setItem("trainerName",this.profileForm.get('nombre')?.value || '');
-      sessionStorage.setItem("infoTrainer",JSON.stringify(this.profileForm.value));
+      this.facadeService.setInfoTrainer(this.profileForm);
       this.router.navigate(["/entrenador-equipo"]);
     }
   }
@@ -67,7 +67,7 @@ export class FormEntrenadorComponent implements OnInit {
   }
 
   getData(){
-    const savedTrainer = sessionStorage.getItem('infoTrainer');
+    const savedTrainer = this.facadeService.getInfoTrainer();
     const trainerData = savedTrainer ? JSON.parse(savedTrainer) : {};
 
     if(trainerData){

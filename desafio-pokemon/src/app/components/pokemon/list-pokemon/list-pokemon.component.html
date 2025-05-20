@@ -1,16 +1,18 @@
 <p class="body__list__title">Pókemon</p>
 <p class="body__list__subtitle pb-8">Selecciona 3 Pókemon para que sean parte de tu equipo</p>
-<form class="body__list__search mb-8">
-  <mat-form-field class="w-full">
+<div class="body__list__search mb-8">
+  <mat-form-field class="w-full !rounded-full">
     <mat-icon matPrefix>search</mat-icon>
     <mat-label></mat-label>
-    <input [formControl]="searchControl" class="!rounded-xl" type="text" autofocus matInput placeholder="Buscar por índice, nombre...">
+    <input [formControl]="searchControl" class="!rounded-full" type="text" autofocus matInput placeholder="Buscar por índice, nombre...">
   </mat-form-field>
-</form>
+</div>
 
 <ng-container *ngIf="!isNotFoundPokemon else showNotFoundMessage">
   <div class="grid md:grid-cols-3 gap-x-4 gap-y-12 sm:grid-cols-1">
-    <div *ngFor="let pokemon of list" (click)=selectPokemon(pokemon.id)
+    <div *ngFor="let pokemon of list"
+          (click)=selectPokemon(pokemon.id)
+          [class.opacity-40]="!pokemon.isSelected && countPokemonSelected==4"
           class="relative h-28 bg-gray-200 rounded-xl body__list__pokemon"
           [ngClass]="{
             'body__list__pokemon--selected': pokemon.isSelected,

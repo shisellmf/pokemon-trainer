@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { tick } from '@angular/core/testing';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { PASATIEMPOS, Trainer } from 'src/app/models/entrenador.interface';
+import { FacadeService } from 'src/app/services/facade.service';
 
 @Component({
   selector: 'app-registro-entrenador',
@@ -19,7 +20,7 @@ export class RegistroEntrenadorComponent implements OnInit{
   nameTrainer:string='';
   step:number=0;
 
-  constructor(private snackBar:MatSnackBar){}
+  constructor(private snackBar:MatSnackBar,private facadeService:FacadeService){}
 
   ngOnInit(): void {
     this.getData();
@@ -46,8 +47,7 @@ export class RegistroEntrenadorComponent implements OnInit{
       const result = reader.result;
       if (typeof result === 'string') {
         this.imagePreview = reader.result;
-        sessionStorage.setItem('imgTrainer', result);
-        sessionStorage.setItem('imgTrainerText', this.imageText);
+        this.facadeService.setImageTrainer(result,this.imageText?this.imageText:'');
       }
     };
     reader.readAsDataURL(file);
@@ -55,12 +55,11 @@ export class RegistroEntrenadorComponent implements OnInit{
   }
 
   getData(){
-    const savedImage = sessionStorage.getItem('imgTrainer');
-    const savedImageText = sessionStorage.getItem('imgTrainerText');
+    const savedImage = this.facadeService.getImageTrainer();
 
-    if (savedImage && savedImageText) {
-      this.imagePreview = savedImage;
-      this.imageText= savedImageText;
+    if (savedImage.image) {
+      this.imagePreview = savedImage.image;
+      this.imageText= savedImage.text?savedImage.text:'';
     }
   }
 

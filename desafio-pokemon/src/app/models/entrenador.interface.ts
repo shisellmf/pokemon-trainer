@@ -2,9 +2,13 @@
 export interface Trainer{
   name: string;
   hobby: string;
-  age: number;
-  cumpleanos?: string;
+  birthday: Date;
   dui?: string;
+}
+
+export interface ImageTrainer{
+  image:string|null;
+  text:string|null;
 }
 
 export interface Hobbies {

@@ -25,12 +25,12 @@
   <div class="w-full pt-8">
       <div class="body__image__info grid grid-cols-2 place-content-between pt-0">
         <div class="font-semibold">Pasatiempo:</div>
-        <div>{{trainer.hobby}}</div>
+        <div class="place-self-end text-right">{{trainer.hobby}}</div>
         <div class="font-semibold">Edad:</div>
-        <div>{{trainer.age}}</div>
-        <ng-container *ngIf="age>18">
+        <div class="place-self-end">{{trainer.birthday | age}}</div>
+        <ng-container *ngIf="(trainer.birthday | age) > 18">
           <div class="font-semibold">DUI:</div>
-          <div>{{trainer.dui}}</div>
+          <div class="place-self-end">{{trainer.dui}}</div>
         </ng-container>
       </div>
   </div>

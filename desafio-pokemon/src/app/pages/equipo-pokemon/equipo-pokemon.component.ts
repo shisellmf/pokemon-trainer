@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.interface';
+import { FacadeService } from 'src/app/services/facade.service';
 
 @Component({
   selector: 'app-equipo-pokemon',
@@ -12,6 +13,8 @@ export class EquipoPokemonComponent {
   isLoading:boolean=false;
   step:number=2;
 
+  constructor(private facadeService:FacadeService){}
+
   ngOnInit(): void {
 
     this.getData();
@@ -23,6 +26,6 @@ export class EquipoPokemonComponent {
   }
 
   getData(){
-    this.trainerName = sessionStorage.getItem('trainerName');
+    this.trainerName = this.facadeService.getNameTrainer();
   }
 }

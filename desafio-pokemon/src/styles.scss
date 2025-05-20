@@ -102,3 +102,21 @@ mat-option:hover{
 .mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
   background-color: $neutro-color!important;
 }
+
+.mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper {
+  border-radius: 10px;
+  height: 45px;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  font-weight: bold;
+}
+
+.mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+  color: rgba(0, 0, 0, 0.4);
+  padding-top: 12px!important
+}
+
+.mat-mdc-form-field-icon-prefix>.mat-icon, .mat-mdc-form-field-icon-suffix>.mat-icon {
+  padding: 1px 12px 12px 12px!important;
+}

@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PASATIEMPOS, Trainer } from 'src/app/models/entrenador.interface';
-import { AgePipe } from 'src/app/pipes/age/age.pipe';
+import { FacadeService } from '../../../services/facade.service';
 
 @Component({
   selector: 'app-image-info',
   templateUrl: './image-info.component.html',
-  styleUrls: ['./image-info.component.scss'],
-  providers: [AgePipe],
+  styleUrls: ['./image-info.component.scss']
 })
 export class ImageInfoComponent implements OnInit {
   imagePreview: string | null='';
@@ -14,32 +13,31 @@ export class ImageInfoComponent implements OnInit {
   trainer: Trainer={
     name:"",
     hobby:"",
-    age:0,
-    cumpleanos:"",
+    birthday: new Date(),
     dui:""
   };
   pasatiempos= PASATIEMPOS;
   age:number=0;
-  agePipe: any;
   @Input() public step:number=1;
+
+  constructor(private facadeService:FacadeService){}
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData(){
-    const savedTrainer = sessionStorage.getItem('infoTrainer');
-    const savedImage = sessionStorage.getItem('imgTrainer');
+    const savedTrainer = this.facadeService.getInfoTrainer();
+    const savedImage = this.facadeService.getImageTrainer();
 
     if (savedImage) {
-      this.imagePreview = savedImage;
+      this.imagePreview = savedImage.image;
     }
 
     const trainerData = savedTrainer ? JSON.parse(savedTrainer) : {};
     this.trainer.name= trainerData.nombre;
     this.trainer.hobby= this.pasatiempos.find(i => i.value === trainerData.pasatiempo)?.viewValue || '';
-    this.age= this.agePipe.transform(trainerData.cumpleanos);
-    this.trainer.age= this.age;
+    this.trainer.birthday= trainerData.cumpleanos;
     this.trainer.dui= trainerData.documento;
   }
 

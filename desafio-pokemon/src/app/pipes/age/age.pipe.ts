@@ -9,7 +9,6 @@ export class AgePipe implements PipeTransform {
     const today = new Date();
     const birth = new Date(birthday);
     let age = today.getFullYear() - birth.getFullYear();
-
     return age;
   }
 

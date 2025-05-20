@@ -19,7 +19,7 @@ export class SelectedPokemonComponent implements OnInit {
   }
 
   getData(){
-    const infoPokemon= sessionStorage.getItem("selectedPoken");
+    const infoPokemon= this.facadeService.getSelectedPokemon();
     const pokemonData = infoPokemon ? JSON.parse(infoPokemon) : {};
 
     this.loadFullPokemonList(pokemonData);

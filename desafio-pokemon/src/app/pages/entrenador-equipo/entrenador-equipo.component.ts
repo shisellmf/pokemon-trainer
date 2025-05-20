@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { AgePipe } from '../../pipes/age/age.pipe';
+import { FacadeService } from '../../services/facade.service';
 
 @Component({
   selector: 'app-entrenador-equipo',
@@ -13,6 +14,8 @@ export class EntrenadorEquipoComponent implements OnInit {
   step:number=1;
   trainerName:string | null='';
 
+  constructor(private facadeService:FacadeService){}
+
   ngOnInit(): void {
 
     this.getData();
@@ -24,7 +27,7 @@ export class EntrenadorEquipoComponent implements OnInit {
   }
 
   getData(){
-    const savedTrainer = sessionStorage.getItem('trainerName');
+    const savedTrainer = this.facadeService.getNameTrainer();
     this.trainerName= savedTrainer;
   }
 }
